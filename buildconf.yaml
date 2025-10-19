@@ -1,0 +1,23 @@
+Affiliation: Instituto de Ingeniería Biológica y Médica
+Authors:
+  - Pierre Padilla
+CustomCategories:
+  electronica:
+    DisplayName: Electrónica
+    Reuse: true
+  herramientas:
+    DisplayName: Herramientas
+    Reuse: true
+  insumos:
+    DisplayName: Insumos
+    Reuse: true
+  mecanica:
+    DisplayName: Mecánica
+    Reuse: true
+  piezaimpresa:
+    Reuse: true
+    DisplayName: Piezas Plásticas 3D
+HoverColor: '#555555'
+License: CERN-OHL-W-2.0
+PrimaryColor: '#f1502f'
+SecondaryColor: '#cccccc'
