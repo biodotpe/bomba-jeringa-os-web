@@ -1,3 +1,4 @@
+
 name: Deploy Gitbuilding Project to Github Pages
 
 on: [push]
@@ -7,33 +8,19 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-
-      - name: Install Python
-        uses: actions/setup-python@v2
+      - name: Install Python 3
+        uses: actions/setup-python@v1
         with:
           python-version: "3.7"
-
-      - name: Install system dependencies
+      - name: Build
         run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc
-
-      - name: Install GitBuilding
-        run: |
-          pip install --upgrade pip
           pip install gitbuilding
-
-      - name: Build GitBuilding HTML
-        run: |
           gitbuilding build-html
-        env:
-          PYTHONUNBUFFERED: 1
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: _site
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: main
+          FOLDER: _site/
           # Automatically remove deleted files from the deploy branch
           CLEAN: false
