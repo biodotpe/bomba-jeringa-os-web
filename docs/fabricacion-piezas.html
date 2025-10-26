@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bombas de Jeringa Open-Source</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
+<link rel="icon" type="image/png" href="./static/Logo/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="./static/Logo/favicon-16x16.png" sizes="16x16" />
+
+    <link href="./static/base-style.css" rel="stylesheet">
+    <link href="./static/site-style.css" rel="stylesheet">
+                <script type="text/javascript" src="./static/3d-viewer.js"></script>
+        <style>
+  :root {
+    --primary-color: #f1502f;
+  }
+</style>
+<style>
+  :root {
+    --secondary-color: #cccccc;
+  }
+</style>
+<style>
+  :root {
+    --hover-color: #555555;
+}
+</style>
+    
+        <script type="text/javascript" src="./static/search.js" defer=""></script>
+    </head>
+<body>
+<header class="site-header">
+    <div class="wrapper header-wrapper" >
+        <div class=header-text>
+   
+    <h1 class="site-title">Bombas de Jeringa Open-Source</h1>
+   
+    <p class="author">by Pierre Padilla</p>
+    <p class="affiliation">Instituto de Ingeniería Biológica y Médica</p>
+</div>
+            </div>
+</header>
+<div class="page-content">
+            <div>
+            <nav class="sidebar">
+                <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+                </a>
+                <ul class="nav-list">
+                <li>
+    <a class="navhome" href="./">
+        Bombas de Jeringa Open-Source
+    </a>
+</li>
+<li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
+  <input
+    type="text"
+    placeholder="Search..."
+    v-on:input="search($event.target.value)"
+    v-on:keypress="handleKeyPress"
+    v-on:keyup.esc="$event.target.blur()"
+    v-on:focus="handleFocus"
+    v-on:blur="handleBlur"
+    :value="searchTerm" />
+    <div class="search-results" v-if="focused && searchTerm.length > 0">
+        <div v-if="searchResults.length > 0">Results:</div>
+        <div v-if="searchResults.length === 0">No results.</div>
+        <template v-for="(result, index) in searchResults">
+            <li>
+                <a class="search-result" :href="`./${result.path}.html`">
+               <span v-for="crumb in result.breadCrumbs.slice(0, -1)">
+                ${crumb + ' > '}
+                </span>
+               ${result.title || result.breadCrumbs[result.breadCrumbs.length - 1]}
+                <p>
+                    <span v-for="node in result.highlightChars" :class="node.mark ? 'highlight' : ''" >${node.chars}</span>
+                </p>
+                </a>
+            </li>
+        </template>
+    </div>
+</li>
+<li class="not-active">
+    <a class="not-active" href="./index_BOM.html">
+        Bill of Materials
+    </a>
+    </li>
+<li class="active">
+    <a class="active" href="./fabricacion-piezas.html">
+        Fabricación de piezas plásticas
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./ensamblaje-bomba.html">
+        Ensamblaje de la bomba
+    </a>
+    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper">
+    <h1 id="fabricacion-de-piezas-plasticas">Fabricación de piezas plásticas</h1>
+<div class="pagebom">
+<h3 id="herramientas">Herramientas</h3>
+<ul>
+<li>1 <a Class="bom" href="parts/herramientas/alicate-corte-diagonal.html">alicate de corte diagonal</a> </li>
+<li>1 <a Class="bom" href="parts/herramientas/cuchillo-hoja-retractil.html">cuchillo de hoja rectráctil</a> </li>
+<li>1 <a Class="bom" href="parts/herramientas/impresora-3D.html">impresora 3D</a> </li>
+</ul>
+<h3 id="insumos">Insumos</h3>
+<ul>
+<li>200 g of <a Class="bom" href="parts/insumo/filamento-pla.html">filamento PLA</a> </li>
+</ul>
+</div>
+<h2 class="page-step" id="configura-tu-impresora-3d">Step 1: Configura tu impresora 3D</h2>
+<p>Todas las piezas plásticas de la bomba de jeringa pueden ser impresas con <a href="parts/herramientas/impresora-3D.html">impresoras 3D</a>, estilo Rep-Rap, y con <a href="parts/insumo/filamento-pla.html">filamento PLA</a>.</p>
+<p>Para la fabricación de piezas, te recomendamos configurar tu impresora con los siguientes parámetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>PLA</td>
+</tr>
+<tr>
+<td>Material Temperature</td>
+<td>Recommended by the PLA brand</td>
+</tr>
+<tr>
+<td>Layer height</td>
+<td>0.2mm or less</td>
+</tr>
+<tr>
+<td>Infill</td>
+<td>Printer default or more</td>
+</tr>
+<tr>
+<td>Brim</td>
+<td>Recommended for all parts</td>
+</tr>
+<tr>
+<td>Slice gap closing radius</td>
+<td>0.001mm</td>
+</tr>
+</tbody>
+</table>
+<p>Para comprobar la calibración de tu impresora, descarga este cubo e imprímelo:</p>
+<noscript><a href="models/xyz_cube.stl"></a></noscript>
+<p><gb3d-viewer src="models/xyz_cube.stl"></gb3d-viewer></p>
+<p>Una vez impreso, compara las dimensiones del cubo y las letras respecto a las dimensiones en el software de diseño:</p>
+<p><img alt="" src="images/cubo-xyz001.jpg" title="" /></p>
+<h2 class="page-step" id="impresin-3d-de-piezas">Step 2: Impresión 3D de piezas</h2>
+<p>Ahora que verificaste el funcionamiento de tu impresora 3D con el filamento PLA, puedes imprimir las piezas de la bomba de jeringa:</p>
+<ul>
+<li><a name="output__back-support---a"></a>Back support - A: <a href="models/back-support-A.html" title="">back-support-A.stl</a></li>
+<li><a name="output__back-support---b"></a>Back support - B: <a href="models/back-support-B.html" title="">back-support-B.stl</a></li>
+<li><a name="output__carriage"></a>Carriage: <a href="models/carriage.html" title="">carriage.stl</a></li>
+<li><a name="output__front-support"></a>Front support: <a href="models/front-support.html" title="">front-support.stl</a></li>
+<li><a name="output__syringe-holder"></a>Syringe holder: <a href="models/syringe-holders.html" title="">syringe-holders.stl</a></li>
+<li><a name="output__hand-knob"></a>Hand knob: <a href="models/hand-knob.html" title="">hand-knob.stl</a></li>
+</ul>
+<h2 class="page-step" id="limpieza-de-piezas">Step 3: Limpieza de piezas</h2>
+<div class="warning-block">
+<p><strong>Warning</strong> </p>
+<p><strong>Ten cuidado al remover los excesos:</strong> Para evitar accidentes, primero remueve los excesos sin objetos punzocortantes. Luego, retira el remanente utilizando la técnica descrita abajo.</p>
+</div>
+<p>Cuidadosamente remueve los excesos de impresión de todas las piezas plásticas:</p>
+<ol>
+<li>
+<p>Utiliza un <a href="parts/herramientas/alicate-corte-diagonal.html">alicate de corte diagonal</a> para remover la mayoría de excesos de impresión de cada parte.</p>
+</li>
+<li>
+<p>Limpia los remanentes de impresión con un <a href="parts/herramientas/cuchillo-hoja-retractil.html">cuchillo de hoja rectráctil</a>:</p>
+</li>
+</ol>
+<ul>
+<li>Sosten el cuchillo en tu mano dominante con tus cuatro dedos alrededor del mango, dejando libre tu pulgar.</li>
+<li>Sosten la pieza plástica en tu otra mano, en la zona más alejada posible de las superficies a ser cortadas.</li>
+<li>Apoya la pieza plástica en el pulgar de tu mano dominante.</li>
+<li>Coloca la hoja del cuchillo en la superficie que será cortada, y cuidadosamente cierra tu mano dominante, moviendo la hoja, con control, hacia tu pulgar.</li>
+</ul>
+<p><img alt="" src="images/remover-excesos.jpg" title="" /></p>
+<!-- GitBuilding Nav -->
+<hr />
+<p><a href="index_BOM.html">Previous page</a> | <a href="ensamblaje-bomba.html">Next page</a></p>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="wrapper">
+        <a target="_blank" rel="noopener noreferrer" href="https://gitbuilding.io">
+    <img class="icon" src="./static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
+    <span class="doc-info">Documentation powered by GitBuilding</span>
+</a>
+    <p class="author">©2025 Pierre Padilla</p>
+    <p class="license">Bombas de Jeringa Open-Source is released under <a href="license.html">CERN-OHL-S-2.0</a>.</p>
+
+    </div>
+</footer></body>
+</html>

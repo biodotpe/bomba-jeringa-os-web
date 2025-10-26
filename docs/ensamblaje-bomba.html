@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bombas de Jeringa Open-Source</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
+<link rel="icon" type="image/png" href="./static/Logo/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="./static/Logo/favicon-16x16.png" sizes="16x16" />
+
+    <link href="./static/base-style.css" rel="stylesheet">
+    <link href="./static/site-style.css" rel="stylesheet">
+                <style>
+  :root {
+    --primary-color: #f1502f;
+  }
+</style>
+<style>
+  :root {
+    --secondary-color: #cccccc;
+  }
+</style>
+<style>
+  :root {
+    --hover-color: #555555;
+}
+</style>
+    
+        <script type="text/javascript" src="./static/search.js" defer=""></script>
+    </head>
+<body>
+<header class="site-header">
+    <div class="wrapper header-wrapper" >
+        <div class=header-text>
+   
+    <h1 class="site-title">Bombas de Jeringa Open-Source</h1>
+   
+    <p class="author">by Pierre Padilla</p>
+    <p class="affiliation">Instituto de Ingeniería Biológica y Médica</p>
+</div>
+            </div>
+</header>
+<div class="page-content">
+            <div>
+            <nav class="sidebar">
+                <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+                </a>
+                <ul class="nav-list">
+                <li>
+    <a class="navhome" href="./">
+        Bombas de Jeringa Open-Source
+    </a>
+</li>
+<li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
+  <input
+    type="text"
+    placeholder="Search..."
+    v-on:input="search($event.target.value)"
+    v-on:keypress="handleKeyPress"
+    v-on:keyup.esc="$event.target.blur()"
+    v-on:focus="handleFocus"
+    v-on:blur="handleBlur"
+    :value="searchTerm" />
+    <div class="search-results" v-if="focused && searchTerm.length > 0">
+        <div v-if="searchResults.length > 0">Results:</div>
+        <div v-if="searchResults.length === 0">No results.</div>
+        <template v-for="(result, index) in searchResults">
+            <li>
+                <a class="search-result" :href="`./${result.path}.html`">
+               <span v-for="crumb in result.breadCrumbs.slice(0, -1)">
+                ${crumb + ' > '}
+                </span>
+               ${result.title || result.breadCrumbs[result.breadCrumbs.length - 1]}
+                <p>
+                    <span v-for="node in result.highlightChars" :class="node.mark ? 'highlight' : ''" >${node.chars}</span>
+                </p>
+                </a>
+            </li>
+        </template>
+    </div>
+</li>
+<li class="not-active">
+    <a class="not-active" href="./index_BOM.html">
+        Bill of Materials
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./fabricacion-piezas.html">
+        Fabricación de piezas plásticas
+    </a>
+    </li>
+<li class="active">
+    <a class="active" href="./ensamblaje-bomba.html">
+        Ensamblaje de la bomba
+    </a>
+    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper">
+    <h1 id="ensamblaje-de-la-bomba">Ensamblaje de la bomba</h1>
+<p><em>Este diseño está basado en <a href="https://www.mass-spec.ru/projects/diy/syringe_pump/eng/" target="_blank" title="">Open-Source Syringe Pump</a> desarrollado por Andrey Samokhin</em></p>
+<div class="pagebom">
+<h3 id="herramientas">Herramientas</h3>
+<ul>
+<li>1 <a Class="bom" href="parts/herramientas/llave-allen-M2.html">llave Allen M2</a> </li>
+<li>1 <a Class="bom" href="parts/herramientas/llave-allen-M3.html">llave Allen M3</a> </li>
+<li>1 <a Class="bom" href="parts/herramientas/llave-allen-M4.html">llave Allen M4</a> </li>
+<li>1 <a Class="bom" href="parts/herramientas/soldador.html">soldador</a> </li>
+</ul>
+<h3 id="electronica">Electrónica</h3>
+<ul>
+<li>1 <a Class="bom" href="parts/electronica/NEMA-17-motor.html">motor NEMA 17</a> </li>
+</ul>
+<h3 id="mecanica">Mecánica</h3>
+<ul>
+<li>1 <a Class="bom" href="parts/mecanica/acople-flexible-motor.html">acople flexible de aluminio</a> </li>
+<li>1 <a Class="bom" href="parts/mecanica/caja-cambios-100-1.html">caja de cambios 100:1</a> </li>
+<li>4 <a Class="bom" href="parts/mecanica/inserto-roscado-M3.html">inserto roscado M3</a> </li>
+<li>2 <a Class="bom" href="parts/mecanica/rodamiento-lineal.html">rodamiento lineal</a> </li>
+<li>2 <a Class="bom" href="parts/mecanica/tornillo-M3-10mm.html">tornillo M3 10mm</a> </li>
+<li>2 <a Class="bom" href="parts/mecanica/tornillo-M3-12mm.html">tornillo M3 12mm</a> </li>
+<li>4 <a Class="bom" href="parts/mecanica/tornillo-M3-16mm.html">tornillo M3 16mm</a> </li>
+<li>2 <a Class="bom" href="parts/mecanica/tornillo-M3-20mm.html">tornillo M3 20mm</a> </li>
+<li>4 <a Class="bom" href="parts/mecanica/tornillo-M3-8mm.html">tornillo M3 8mm</a> </li>
+<li>4 <a Class="bom" href="parts/mecanica/tornillo-M4-10mm.html">tornillo M4 10mm</a> </li>
+<li>1 <a Class="bom" href="parts/mecanica/tuerca-varilla-roscada.html">tuerca de varilla roscada</a> </li>
+<li>2 <a Class="bom" href="parts/mecanica/tuerca-M3.html">tuerca M3</a> </li>
+<li>2 <a Class="bom" href="parts/mecanica/varilla-lisa.html">varilla lisa</a> </li>
+<li>1 <a Class="bom" href="parts/mecanica/varilla-roscada.html">varilla roscada</a> </li>
+</ul>
+<h3 id="piezas-plasticas">Piezas Plásticas</h3>
+<ul>
+<li>1 <a Class="bom" href="fabricacion-piezas.html">Back support - A</a> </li>
+<li>1 <a Class="bom" href="fabricacion-piezas.html">Back support - B</a> </li>
+<li>1 <a Class="bom" href="fabricacion-piezas.html">Carriage</a> </li>
+<li>1 <a Class="bom" href="fabricacion-piezas.html">Front support</a> </li>
+<li>2 <a Class="bom" href="fabricacion-piezas.html">Hand knob</a> </li>
+<li>1 <a Class="bom" href="fabricacion-piezas.html">Syringe holder</a> </li>
+</ul>
+</div>
+<div class="info-block">
+<p>Debes construir al menos 02 bombas de jeringa para experimentos de microfluídica de gotas.</p>
+</div>
+<h2 class="page-step" id="ensambla-el-motor-paso-a-paso-y-la-caja-de-cambios">Step 1: Ensambla el motor paso a paso y la caja de cambios</h2>
+<p>Inserta el eje del <a href="parts/electronica/NEMA-17-motor.html">motor NEMA 17</a> en la <a href="parts/mecanica/caja-cambios-100-1.html">caja de cambios</a> y fíjala a la carcasa usando cuatro <a href="parts/mecanica/tornillo-M3-8mm.html">tornillos M3 8mm</a>. Usa una <a href="parts/herramientas/llave-allen-M3.html">llave Allen M3</a> para apretarlos.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show0').src=this.src" src="images/motor-gearbox.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show0').src=this.src" src="images/motor-gearbox-1.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show0" src="images/motor-gearbox.jpg" alt=""/></div>
+<p>Luego, utiliza la misma llave Allen para apretar los dos tornillos de sujeción dentro de la caja de cambios y conectar el eje del motor a los engranajes. Asegúrate de que uno de los tornillos de sujeción esté alineado con la parte plana del eje del motor, si es que tiene una.</p>
+<p><img alt="" src="images/motor-gearbox-2.jpg" title="" /></p>
+<h2 class="page-step" id="ensambla-la-caja-de-cambios-el-soporte-posterior-y-la-varilla-roscada">Step 2: Ensambla la caja de cambios, el soporte posterior y la varilla roscada</h2>
+<p>Toma el <a href="fabricacion-piezas.html">soporte posterior - A</a>, cuatro <a href="parts/mecanica/inserto-roscado-M3.html">insertos roscados M3</a> y colócalas en cada agujero de esta pieza impresa como se muestra a continuación. Aplica calor a cada inserto (usando un <a href="parts/herramientas/soldador.html">soldador</a>) y usa una fuerza suave para empujarlos hasta su lugar, como se describe en la <a href="https://hackaday.com/2019/02/28/threading-3d-printed-parts-how-to-use-heat-set-inserts/" target="_blank" title="">guía para usar insertos roscados</a></p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show1').src=this.src" src="images/back-supp-A-heat-inserts.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show1').src=this.src" src="images/heat-set-insert.gif" alt="" />
+    <img onmouseover="getElementById('gallery-show1').src=this.src" src="images/back-supp-A-heat-inserts-1.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show1" src="images/back-supp-A-heat-inserts.jpg" alt=""/></div>
+<p>Toma cuatro <a href="parts/mecanica/tornillo-M4-10mm.html">tornillos M4 10mm</a> y una <a href="parts/herramientas/llave-allen-M4.html">llave Allen M4</a> para fijar el <a href="fabricacion-piezas.html">soporte posterior - A</a> a la caja de cambios. Asegúrate de que la orientación de la pieza sea correcta. El tornillo indicado debe estar opuesto al conector eléctrico del motor paso a paso.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show2').src=this.src" src="images/back-supp-A-gearbox.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show2').src=this.src" src="images/back-supp-A-gearbox-1.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show2" src="images/back-supp-A-gearbox.jpg" alt=""/></div>
+<p>Inserta el eje de la <a href="parts/mecanica/caja-cambios-100-1.html">caja de cambios</a> a la mitad dentro del <a href="parts/mecanica/acople-flexible-motor.html">acople flexible de motor</a> y luego apriétalo. Usa una  una <a href="parts/herramientas/llave-allen-M2.html">llave Allen M2</a> para ajustar el acople.</p>
+<p><img alt="" src="images/gearbox-coupling.jpg" title="" /></p>
+<p>Toma cuatro <a href="parts/mecanica/tornillo-M3-16mm.html">tornillos M3 16mm</a> para fijar el <a href="fabricacion-piezas.html">soporte posterior - B</a> a la pieza A. Asegúrate de que los agujeros del soporte B estén alineados con las insertos roscados.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show3').src=this.src" src="images/back-supp-A-B.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show3').src=this.src" src="images/back-supp-A-B-1.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show3" src="images/back-supp-A-B.jpg" alt=""/></div>
+<p>Toma la <a href="parts/mecanica/varilla-roscada.html">varilla roscada</a> e insértalo en el acople flexible de motor. Luego, aprieta el acople sobre la varilla.</p>
+<p><img alt="" src="images/lead-screw-coupling.jpg" title="" /></p>
+<p>Toma dos <a href="parts/mecanica/tuerca-M3.html">tuercas M3</a>, insértalas en el <a href="fabricacion-piezas.html">soporte posterior - B</a> y presiónalas hasta el fondo. Usa cualquier herramienta que necesites para empujarlas. Asegúrate de que estén alineadas con los agujeros del soporte. Luego, toma dos <a href="parts/mecanica/tornillo-M3-10mm.html">tornillos M3 10mm</a> y enróscalos para sostener las tuercas. Usa una <a href="parts/herramientas/llave-allen-M3.html">llave Allen M3</a>.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show4').src=this.src" src="images/back-supp-B-nut.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show4').src=this.src" src="images/back-supp-B-screw.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show4" src="images/back-supp-B-nut.jpg" alt=""/></div>
+<h2 class="page-step" id="ensambla-e-implementa-el-carruaje">Step 3: Ensambla e implementa el carruaje</h2>
+<p>Inserta la <a href="parts/mecanica/tuerca-varilla-roscada.html">tuerca de la varilla roscada</a> en el <a href="fabricacion-piezas.html">carruaje</a> y fíjala al carruaje con dos <a href="parts/mecanica/tornillo-M3-16mm.html">tornillos M3 16mm</a> y dos <a href="parts/mecanica/tuerca-M3.html">tuercas M3</a>. Inserta los tornillos desde el lado opuesto para sujetar bien la tuerca de la varilla.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show5').src=this.src" src="images/carriage-lead-screw-nut.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show5').src=this.src" src="images/carriage-lead-screw-nut-1.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show5').src=this.src" src="images/carriage-lead-screw-nut-2.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show5" src="images/carriage-lead-screw-nut.jpg" alt=""/></div>
+<p>Toma el <a href="fabricacion-piezas.html">carruaje</a>, luego toma los <a href="parts/mecanica/rodamiento-lineal.html">rodamientos lineales</a> e insértalos en los laterales del carruaje. Después, toma dos <a href="parts/mecanica/tuerca-M3.html">tuercas M3</a> e insértalas en el carruaje y presiónalas. Usa cualquier herramienta que necesites para empujarlas. Asegúrate de que estén alineadas con los agujeros. Toma dos <a href="parts/mecanica/tornillo-M3-12mm.html">tornillos M3 12mm</a> y una llave Allen M3 para fijar los rodamientos.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show6').src=this.src" src="images/carriage-linear-bearings.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show6').src=this.src" src="images/carriage-nut.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show6').src=this.src" src="images/carriage-screw.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show6" src="images/carriage-linear-bearings.jpg" alt=""/></div>
+<p>Inserta la varilla en la tuerca. Luego, enróscalo manualmente hasta la mitad de la varilla como se muestra a continuación.</p>
+<p><img alt="" src="images/carriage-mounted.jpg" title="" /></p>
+<p>Empuja los <a href="parts/mecanica/varilla-lisa.html">rieles lineales</a> a través de los rodamientos del [carruaje] e insértalos en el <a href="fabricacion-piezas.html">soporte posterior - B</a>, uno por el lado izquierdo y otro por el derecho. Asegúrate de que entren correctamente en los agujeros y luego empújalos hasta el fondo. Fíjalos al soporte posterior B.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show7').src=this.src" src="images/carriage-mounted-1.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show7').src=this.src" src="images/carriage-mounted-2.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show7" src="images/carriage-mounted-1.jpg" alt=""/></div>
+<h2 class="page-step" id="ensambla-el-soporte-frontal-las-perillas-y-los-ajustes-de-jeringas">Step 4: Ensambla el soporte frontal, las perillas y los ajustes de jeringas</h2>
+<p>Toma el <a href="fabricacion-piezas.html">soporte frontal</a>, dos <a href="parts/mecanica/inserto-roscado-M3.html">insertos roscados M3</a> y colócalas en cada agujero de esta pieza impresa. Aplica calor a cada inserto (usando un <a href="parts/herramientas/soldador.html">soldador</a>) y usa una fuerza suave para empujarlos hasta su lugar, como se describe en la <a href="https://hackaday.com/2019/02/28/threading-3d-printed-parts-how-to-use-heat-set-inserts/" target="_blank" title="">guía para usar insertos roscados</a></p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show8').src=this.src" src="images/heat-set-insert.gif" alt="" />
+    <img onmouseover="getElementById('gallery-show8').src=this.src" src="images/front-support.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show8" src="images/heat-set-insert.gif" alt=""/></div>
+<p>Inserta<a href="parts/mecanica/tuerca-M3.html">tuercas M3</a> en las cavidades del soporte frontal. Usa cualquier herramienta para empujarlas. Asegúrate de que estén alineadas con los agujeros del soporte. Toma dos <a href="parts/mecanica/tornillo-M3-16mm.html">tornillos M3 16mm</a> y enróscalos lo suficiente para sostener las tuercas.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show9').src=this.src" src="images/front-supp-nut.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show9').src=this.src" src="images/front-supp-screw.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show9" src="images/front-supp-nut.jpg" alt=""/></div>
+<p>Inserta una <a href="parts/mecanica/tuerca-M3.html">tuerca M3</a> en la cavidad de la <a href="fabricacion-piezas.html">perilla</a>. Toma <a href="parts/mecanica/tornillo-M3-20mm.html">tornillo M3 20mm</a> y enróscalo por completo. Repite este paso con la segunda perilla.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show10').src=this.src" src="images/hand-knob.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show10').src=this.src" src="images/hand-knob-2.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show10').src=this.src" src="images/hand-knob-1.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show10" src="images/hand-knob.jpg" alt=""/></div>
+<h2 class="page-step" id="ensambla-el-soporte-frontal-y-los-rieles-lineales">Step 5: Ensambla el soporte frontal y los rieles lineales</h2>
+<p>Alinea los rieles lineales con el soporte frontal para asegurarte de que entren correctamente en los agujeros y luego presiónalos. Fija los rieles lineales al soporte frontal.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show11').src=this.src" src="images/front-supp-linear-rails.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show11').src=this.src" src="images/front-supp-linear-rails-1.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show11" src="images/front-supp-linear-rails.jpg" alt=""/></div>
+<p>Finalmente, toma el <a href="fabricacion-piezas.html">ajuste de jeringa</a> y colócalo en el soporte frontal. Asegúrate de que los agujeros de ambas piezas estén alineados. Toma las dos perillas y enróscalas un poco.</p>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show12').src=this.src" src="images/syringe-holder.jpg" alt="" />
+    <img onmouseover="getElementById('gallery-show12').src=this.src" src="images/syringe-holder-front-supp.jpg" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show12" src="images/syringe-holder.jpg" alt=""/></div>
+<p>La bomba de jeringa esta lista para ser usada.</p>
+<p><img alt="" src="images/syringe-pump.jpg" title="" /></p>
+<!-- GitBuilding Nav -->
+<hr />
+<p><a href="fabricacion-piezas.html">Previous page</a></p>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="wrapper">
+        <a target="_blank" rel="noopener noreferrer" href="https://gitbuilding.io">
+    <img class="icon" src="./static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
+    <span class="doc-info">Documentation powered by GitBuilding</span>
+</a>
+    <p class="author">©2025 Pierre Padilla</p>
+    <p class="license">Bombas de Jeringa Open-Source is released under <a href="license.html">CERN-OHL-S-2.0</a>.</p>
+
+    </div>
+</footer></body>
+</html>
